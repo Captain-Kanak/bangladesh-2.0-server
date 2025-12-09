@@ -91,6 +91,15 @@ const loginUser = async (payload: Record<string, unknown>) => {
       };
     }
 
+    await pool.query(
+      `
+        UPDATE users
+        SET last_login = NOW()
+        WHERE id = $1
+      `,
+      [user.id]
+    );
+
     const token = jwt.sign(
       {
         id: user.id,

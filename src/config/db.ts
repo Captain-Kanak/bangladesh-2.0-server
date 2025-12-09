@@ -17,8 +17,9 @@ const initializeDatabase = async () => {
           role VARCHAR(50) DEFAULT 'user',
           phone VARCHAR(20),
           date_of_birth DATE,
-          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+          last_login TIMESTAMPTZ DEFAULT NOW(),
+          created_at TIMESTAMPTZ DEFAULT NOW(),
+          updated_at TIMESTAMPTZ DEFAULT NOW()
         )
       `
     );
