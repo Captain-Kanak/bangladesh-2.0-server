@@ -14,9 +14,10 @@ const initializeDatabase = async () => {
           name VARCHAR(100) NOT NULL,
           email VARCHAR(150) UNIQUE NOT NULL,
           password VARCHAR(255) NOT NULL,
-          dob DATE,
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          role VARCHAR(50) DEFAULT 'user',
+          date_of_birth DATE,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
       `
     );
