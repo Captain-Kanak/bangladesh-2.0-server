@@ -1,7 +1,7 @@
 import { Pool } from "pg";
 import envConfig from "./envConfig";
 
-const pool = new Pool({
+export const pool = new Pool({
   connectionString: envConfig.dbString,
 });
 
@@ -15,6 +15,7 @@ const initializeDatabase = async () => {
           email VARCHAR(150) UNIQUE NOT NULL,
           password VARCHAR(255) NOT NULL,
           role VARCHAR(50) DEFAULT 'user',
+          phone VARCHAR(20),
           date_of_birth DATE,
           created_at TEXT DEFAULT CURRENT_TIMESTAMP,
           updated_at TEXT DEFAULT CURRENT_TIMESTAMP

@@ -1,4 +1,4 @@
-import express, { Application, json } from "express";
+import express, { Application, json, Request, Response } from "express";
 import initializeDatabase from "./config/db";
 import { authRoutes } from "./modules/auth/auth.routes";
 
@@ -27,6 +27,16 @@ app.get("/api/v1", (req, res) => {
   });
 });
 
-// app.use("/api/v1/auth", authRoutes);
+// auth routes
+app.use("/api/v1/auth", authRoutes);
+
+// handle 404 errors for undefined routes
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    success: false,
+    message: "404 Route not found!",
+    route: req.originalUrl,
+  });
+});
 
 export default app;
